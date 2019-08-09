@@ -71,5 +71,50 @@ namespace CheckoutTests
             Assert.That(result, Is.EqualTo(180));
         }
 
+        [Test]
+        public void GetTotalPrice_ForItemB_Returns30()
+        {
+            //Arrange
+            var sut = new Checkout.Checkout();
+
+            //Act
+            sut.Scan("B");
+            var result = sut.GetTotalPrice();
+
+            //Assert
+            Assert.That(result, Is.EqualTo(30));
+        }
+
+        [Test]
+        public void GetTotalPrice_ForTwoItemB_Returns45()
+        {
+            //Arrange
+            var sut = new Checkout.Checkout();
+
+            //Act
+            sut.Scan("B");
+            sut.Scan("B");
+            var result = sut.GetTotalPrice();
+
+            //Assert
+            Assert.That(result, Is.EqualTo(45));
+        }
+
+        [Test]
+        public void GetTotalPrice_ForThreeItemB_Returns75()
+        {
+            //Arrange
+            var sut = new Checkout.Checkout();
+
+            //Act
+            sut.Scan("B");
+            sut.Scan("B");
+            sut.Scan("B");
+            var result = sut.GetTotalPrice();
+
+            //Assert
+            Assert.That(result, Is.EqualTo(75));
+        }
+
     }
 }
