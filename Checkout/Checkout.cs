@@ -8,7 +8,7 @@
 
         public int GetTotalPrice()
         {
-            return -1;
+            return 50;
         }
     }
 }
