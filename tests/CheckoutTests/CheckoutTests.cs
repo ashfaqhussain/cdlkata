@@ -47,10 +47,28 @@ namespace CheckoutTests
             //Act
             sut.Scan("A");
             sut.Scan("A");
+            sut.Scan("A");
             var result = sut.GetTotalPrice();
 
             //Assert
             Assert.That(result, Is.EqualTo(130));
+        }
+
+        [Test]
+        public void GetTotalPrice_ForFourItemA_Returns180()
+        {
+            //Arrange
+            var sut = new Checkout.Checkout();
+
+            //Act
+            sut.Scan("A");
+            sut.Scan("A");
+            sut.Scan("A");
+            sut.Scan("A");
+            var result = sut.GetTotalPrice();
+
+            //Assert
+            Assert.That(result, Is.EqualTo(180));
         }
 
     }

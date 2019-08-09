@@ -13,7 +13,10 @@ namespace Checkout
 
         public int GetTotalPrice()
         {
-            return _items.Count * 50;
+            var groups = _items.Count / 3;
+            var units = _items.Count - (groups * 3);
+
+            return (groups * 130) + (units * 50);
         }
     }
 }
