@@ -23,10 +23,16 @@ namespace Checkout
             {
                 var price = _pricing.Items.First(x => x.SKU == itemGroup.Key);
 
-                var specialPriced = itemGroup.Count() / price.SpecialPriceQuantity;
-                var unitPriced = itemGroup.Count() - (specialPriced * price.SpecialPriceQuantity);
-
-                total += (specialPriced * price.SpecialPrice) + (unitPriced * price.UnitPrice);
+                if (price.SpecialPriceQuantity > 0)
+                {
+                    var specialPriced = itemGroup.Count() / price.SpecialPriceQuantity;
+                    var unitPriced = itemGroup.Count() - (specialPriced * price.SpecialPriceQuantity);
+                    total += (specialPriced * price.SpecialPrice) + (unitPriced * price.UnitPrice);
+                }
+                else
+                {
+                    total += itemGroup.Count() * price.UnitPrice;
+                }
             }
 
             return total;
